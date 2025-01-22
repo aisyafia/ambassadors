@@ -2,15 +2,18 @@ import { useState } from "react";
 import { createUseStyles } from "react-jss";
 import { useWebcamCapture } from "./useWebcamCapture";
 // import logo from './logo.svg'
-import logo from "./slap.png";
-
+import just_slap from "./slap.png";
+import slap_or_wave from "./slap_or_wave.webp";
+import slap_pop_art from "./slap_pop_art.avif";
+import slap_real_hand from "./slap_real_hand.png";
+import slap_speed from "./slap_speed.jpg";
 import { Link, Routes, Route, Navigate } from "react-router-dom";
 
 const useStyles = createUseStyles((theme) => ({
   "@global body": {
     background: theme.light.background,
     color: theme.light.primary,
-    fontFamily: "sans-serif",
+    fontFamily: "monospace",
   },
 
   App: {
@@ -25,13 +28,13 @@ const useStyles = createUseStyles((theme) => ({
   },
   Header: {
     "&  h1": {
-      fontFamily: "sans-serif",
+      fontFamily: "monospace",
       cursor: "pointer",
       fontSize: "4rem",
     },
   },
   Main: {
-    background: theme.light.background,
+    background: theme.light.secondary,
 
     "& canvas": {
       width: "100%",
@@ -42,8 +45,21 @@ const useStyles = createUseStyles((theme) => ({
     },
   },
   Stickers: {
+    marginTop: "1rem",
+    marginBottom: "1rem",
+    display: "flex",
+    alignItems: "center",
+
     "& img": {
       height: "4rem",
+      borderRadius: "4px",
+      padding: "2px",
+      margin: "4px",
+    },
+
+    "& button": {
+      marginRight: "8px",
+      marginLeft: "8px",
     },
   },
   Gallery: {
@@ -64,11 +80,15 @@ const useStyles = createUseStyles((theme) => ({
   },
 }));
 
-const stickers = [logo].map((url) => {
-  const img = document.createElement("img");
-  img.src = url;
-  return { img, url };
-});
+const logo = [
+  just_slap,
+  slap_or_wave,
+  slap_pop_art,
+  slap_real_hand,
+  slap_speed,
+];
+
+const stickers = logo.map((url) => ({ url }));
 
 function App(props) {
   // css classes from JSS hook
@@ -121,9 +141,20 @@ function App(props) {
               </section>
               <section className={classes.Stickers}>
                 Step 2: select your sticker...
-                <button onClick={() => setSticker(stickers[0])}>
-                  <img src={stickers[0].url} />
-                </button>
+                {stickers.map((stickerItem, index) => (
+                  <button
+                    key={index}
+                    onClick={() => setSticker(stickerItem.url)}
+                  >
+                    <img src={stickerItem.url} alt={`Sticker ${index + 1}`} />
+                  </button>
+                ))}
+                {/* {sticker && (
+                  <div className="classes.SelectedSticker">
+                    <h2>Selected Sticker</h2>
+                    <img src={sticker} alt="Selected sticker" />
+                  </div>
+                )} */}
               </section>
               <section className={classes.Main}>
                 Step three: Slap your self!
