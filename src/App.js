@@ -138,7 +138,7 @@ function App(props) {
     handleVideoRef, // callback function to set ref for invisible video element
     handleCanvasRef, // callback function to set ref for main canvas element
     handleCapture, // callback function to trigger taking the picture
-    picture, // latest captured picture data object
+    pictures, // latest captured picture data object
   ] = useWebcamCapture(sticker?.img, title);
 
   return (
@@ -202,12 +202,13 @@ function App(props) {
               </section>
               <section className={classes.Gallery}>
                 Step 4: Cherish this moment forever
-                {picture && (
-                  <div className={classes.Picture}>
-                    <img src={picture.dataUri} />
-                    <h3>{picture.title}</h3>
-                  </div>
-                )}
+                {pictures &&
+                  pictures.map((picture) => (
+                    <div className={classes.Picture}>
+                      <img src={picture.dataUri} />
+                      <h3>{picture.title}</h3>
+                    </div>
+                  ))}
               </section>
             </main>
           }
