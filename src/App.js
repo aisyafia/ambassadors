@@ -2,6 +2,7 @@ import { useState } from "react";
 import { createUseStyles } from "react-jss";
 import { useWebcamCapture } from "./useWebcamCapture";
 // import logo from './logo.svg'
+
 import just_slap from "./slap.png";
 import slap_or_wave from "./slap_or_wave.webp";
 import slap_pop_art from "./slap_pop_art.avif";
@@ -118,13 +119,17 @@ const logo = [
   slap_speed,
 ];
 
-const stickers = logo.map((url) => ({ url }));
+const stickers = logo.map((url) => {
+  const img = document.createElement("img");
+  img.src = url;
+  return { img, url };
+});
 
 function App(props) {
   // css classes from JSS hook
   const classes = useStyles(props);
   // currently active sticker
-  const [sticker, setSticker] = useState();
+  const [sticker, setSticker] = useState(null);
   // title for the picture that will be captured
   const [title, setTitle] = useState("SLAPPE!");
 
@@ -172,12 +177,9 @@ function App(props) {
               </section>
               <section className={classes.Stickers}>
                 Step 2: select your sticker...
-                {stickers.map((stickerItem, index) => (
-                  <button
-                    key={index}
-                    onClick={() => setSticker(stickerItem.url)}
-                  >
-                    <img src={stickerItem.url} alt={`Sticker ${index + 1}`} />
+                {stickers.map((sticker, index) => (
+                  <button key={index} onClick={() => setSticker(sticker)}>
+                    <img src={sticker.url} alt={`Sticker ${index + 1}`} />
                   </button>
                 ))}
                 {/* {sticker && (
@@ -187,6 +189,7 @@ function App(props) {
                   </div>
                 )} */}
               </section>
+
               <section className={classes.Main}>
                 Step three: Slap your self!
                 {/* <video ref={handleVideoRef} /> */}
