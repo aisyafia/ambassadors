@@ -9,6 +9,7 @@ import slap_pop_art from "./slap_pop_art.avif";
 import slap_real_hand from "./slap_real_hand.png";
 import slap_speed from "./slap_speed.jpg";
 import { Link, Routes, Route, Navigate } from "react-router-dom";
+import Gallery from "./components/Gallery";
 
 const useStyles = createUseStyles((theme) => ({
   "@global body": {
@@ -99,29 +100,6 @@ const useStyles = createUseStyles((theme) => ({
         filter:
           "drop-shadow(0 20px 13px rgb(0 0 0 / 0.03)) drop-shadow(0 8px 5px rgb(0 0 0 / 0.08))",
       },
-    },
-  },
-  Gallery: {
-    marginTop: "2rem",
-    marginBottom: "1rem",
-    borderRadius: "8px",
-    "& img": {
-      height: "16rem",
-      borderRadius: "8px",
-    },
-  },
-  Picture: {
-    background: theme.light.background,
-    padding: 4,
-    position: "relative",
-    display: "grid",
-    grid: "grid-template-columns: repeat(2, minmax(0, 1fr))",
-    justifyContent: "center",
-    borderRadius: "8px",
-    "& h3": {
-      padding: 8,
-      textAlign: "center",
-      width: "100%",
     },
   },
 }));
@@ -215,16 +193,8 @@ function App(props) {
                   onClick={handleCapture}
                 />
               </section>
-              <section className={classes.Gallery}>
-                Step 4: Cherish this moment forever
-                {pictures &&
-                  pictures.map((picture) => (
-                    <div className={classes.Picture}>
-                      <img src={picture.dataUri} />
-                      <h3>{picture.title}</h3>
-                    </div>
-                  ))}
-              </section>
+
+              <Gallery pictures={pictures} />
             </main>
           }
         />
