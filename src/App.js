@@ -8,19 +8,19 @@ import { Link, Routes, Route, Navigate } from "react-router-dom";
 
 const useStyles = createUseStyles((theme) => ({
   "@global body": {
-    background: theme.palette.background,
-    color: theme.palette.text,
+    background: theme.light.background,
+    color: theme.light.primary,
     fontFamily: "sans-serif",
   },
 
   App: {
     padding: "20px",
-    background: theme.palette.primary,
+    background: theme.light.background,
     maxWidth: "800px",
     minHeight: "600px",
     margin: "auto",
     "& a": {
-      color: theme.palette.text,
+      color: theme.light.text,
     },
   },
   Header: {
@@ -31,7 +31,7 @@ const useStyles = createUseStyles((theme) => ({
     },
   },
   Main: {
-    background: theme.palette.secondary,
+    background: theme.light.background,
 
     "& canvas": {
       width: "100%",
@@ -127,7 +127,7 @@ function App(props) {
               </section>
               <section className={classes.Main}>
                 Step three: Slap your self!
-                <video ref={handleVideoRef} />
+                {/* <video ref={handleVideoRef} /> */}
                 <canvas
                   ref={handleCanvasRef}
                   width={2}

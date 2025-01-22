@@ -5,4 +5,11 @@ export const theme = {
     background: "#eee",
     text: "#fff",
   },
+
+  light: {
+    primary: "#003C00",
+    secondary: "#C5DBEF",
+    background: "#faf0e6",
+    text: "#383c41",
+  },
 };
