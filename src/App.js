@@ -47,7 +47,7 @@ const useStyles = createUseStyles((theme) => ({
       opacity: "70%",
 
       "&:hover": {
-        borderRadius: "4px",
+        borderRadius: "8px",
         opacity: "100%",
       },
     },
@@ -61,12 +61,16 @@ const useStyles = createUseStyles((theme) => ({
   },
   Main: {
     background: theme.light.secondary,
+    borderRadius: "8px",
+    padding: "8px",
 
     "& canvas": {
+      marginTop: "1rem",
       width: "100%",
       height: "auto",
     },
     "& video": {
+      marginTop: "1rem",
       display: "none",
     },
   },
@@ -83,26 +87,37 @@ const useStyles = createUseStyles((theme) => ({
 
     "& img": {
       height: "4rem",
-      borderRadius: "4px",
+      borderRadius: "8px",
       padding: "2px",
-      margin: "4px",
     },
 
     "& button": {
       marginRight: "8px",
       marginLeft: "8px",
+      borderRadius: "8px",
+      "&:hover": {
+        filter:
+          "drop-shadow(0 20px 13px rgb(0 0 0 / 0.03)) drop-shadow(0 8px 5px rgb(0 0 0 / 0.08))",
+      },
     },
   },
   Gallery: {
+    marginTop: "2rem",
+    marginBottom: "1rem",
+    borderRadius: "8px",
     "& img": {
       height: "16rem",
+      borderRadius: "8px",
     },
   },
   Picture: {
-    background: "black",
+    background: theme.light.background,
     padding: 4,
     position: "relative",
-    display: "inline-block",
+    display: "grid",
+    grid: "grid-template-columns: repeat(2, minmax(0, 1fr))",
+    justifyContent: "center",
+    borderRadius: "8px",
     "& h3": {
       padding: 8,
       textAlign: "center",
@@ -192,7 +207,7 @@ function App(props) {
 
               <section className={classes.Main}>
                 Step three: Slap your self!
-                {/* <video ref={handleVideoRef} /> */}
+                <video ref={handleVideoRef} />
                 <canvas
                   ref={handleCanvasRef}
                   width={2}
