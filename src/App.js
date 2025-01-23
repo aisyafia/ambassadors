@@ -1,5 +1,4 @@
 import { useState } from "react";
-import { createUseStyles } from "react-jss";
 import { useWebcamCapture } from "./useWebcamCapture";
 // import logo from './logo.svg'
 
@@ -10,125 +9,7 @@ import slap_real_hand from "./slap_real_hand.png";
 import slap_speed from "./slap_speed.jpg";
 import { Link, Routes, Route, Navigate } from "react-router-dom";
 import Gallery from "./components/Gallery";
-
-const useStyles = createUseStyles((theme) => ({
-  "@global body": {
-    background: theme.light.background,
-    color: theme.light.primary,
-    fontFamily: "'Prompt', serif",
-  },
-
-  App: {
-    padding: "20px",
-    background: theme.light.background,
-    maxWidth: "800px",
-    minHeight: "600px",
-    margin: "auto",
-    "& a": {
-      color: theme.light.text,
-    },
-  },
-  NavBar: {
-    fontSize: "24px",
-
-    "& ul": {
-      display: "flex",
-      alignItems: "center",
-      gap: "1rem",
-      cursor: "pointer",
-    },
-
-    "& li": {
-      listStyleType: "none",
-      fontFamily: "'Prompt', serif",
-      fontWeight: 300,
-    },
-
-    "& a": {
-      textDecoration: "none",
-      padding: "4px",
-      opacity: "70%",
-
-      "&:hover": {
-        borderRadius: "8px",
-        opacity: "100%",
-      },
-    },
-  },
-  Header: {
-    "&  h1": {
-      fontFamily: "'Unbounded', serif",
-      cursor: "pointer",
-      fontSize: "4rem",
-      textAlign: "center",
-      marginBottom: "2rem",
-    },
-  },
-  Subtitle: {
-    fontFamily: "Unbounded",
-    textAlign: "center",
-    marginBottom: "4rem",
-  },
-  Main: {
-    background: theme.light.secondary,
-    borderRadius: "8px",
-    padding: "8px",
-
-    "& canvas": {
-      marginTop: "1rem",
-      width: "100%",
-      height: "auto",
-    },
-    "& video": {
-      marginTop: "1rem",
-      display: "none",
-    },
-  },
-  First: {
-    alignItems: "center",
-    gap: "1rem",
-    marginTop: "2rem",
-    marginBottom: "4rem",
-  },
-  FirstSub: {
-    display: "flex",
-    alignItems: "center",
-    height: "20px",
-  },
-  FirstInput: {
-    textAlign: "center",
-    height: "20px",
-    marginTop: "1rem",
-  },
-  FirstExplain: {
-    "& p": {
-      height: "20px",
-      margin: 4,
-    },
-  },
-  Stickers: {
-    marginTop: "1rem",
-    marginBottom: "1rem",
-    display: "flex",
-    alignItems: "center",
-
-    "& img": {
-      height: "4rem",
-      borderRadius: "8px",
-      padding: "2px",
-    },
-
-    "& button": {
-      marginRight: "8px",
-      marginLeft: "8px",
-      borderRadius: "8px",
-      "&:hover": {
-        filter:
-          "drop-shadow(0 20px 13px rgb(0 0 0 / 0.03)) drop-shadow(0 8px 5px rgb(0 0 0 / 0.08))",
-      },
-    },
-  },
-}));
+import useStyles from "./style";
 
 const logo = [
   just_slap,
@@ -187,6 +68,9 @@ function App(props) {
           path="/"
           element={
             <main>
+              <div
+                className={`${classes.blurCircle} ${classes.blurCircle1}`}
+              ></div>
               <section className={classes.First}>
                 <div className={classes.FirstSub}>
                   <h4>First: "What's in a name?"</h4>
@@ -218,12 +102,6 @@ function App(props) {
                     <img src={sticker.url} alt={`Sticker ${index + 1}`} />
                   </button>
                 ))}
-                {/* {sticker && (
-                  <div className="classes.SelectedSticker">
-                    <h2>Selected Sticker</h2>
-                    <img src={sticker} alt="Selected sticker" />
-                  </div>
-                )} */}
               </section>
 
               <section className={classes.Main}>
@@ -235,6 +113,9 @@ function App(props) {
                   height={2}
                   onClick={handleCapture}
                 />
+                <div
+                  className={`${classes.blurCircle} ${classes.blurCircle2}`}
+                ></div>
               </section>
 
               <Gallery pictures={pictures} />
