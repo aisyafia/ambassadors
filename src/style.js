@@ -75,9 +75,9 @@ const useStyles = createUseStyles((theme) => ({
     marginBottom: "4rem",
   },
   Main: {
-    background: theme.light.secondary,
+    background: theme.light.background,
     borderRadius: "8px",
-    padding: "8px",
+    padding: "4px",
     marginTop: "2rem",
 
     "& canvas": {
