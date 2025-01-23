@@ -157,7 +157,9 @@ const useStyles = createUseStyles((theme) => ({
     marginBottom: "1rem",
     "& h3": {
       textAlign: "center",
-      width: "fit-content",
+      height: "20px",
+      marginTop: 0,
+      marginBottom: 0,
     },
 
     "&:hover button": {
@@ -167,6 +169,7 @@ const useStyles = createUseStyles((theme) => ({
   },
   Actions: {
     marginLeft: 8,
+    alignItems: "center",
 
     "& button": {
       padding: "6px 12px",
