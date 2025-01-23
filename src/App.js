@@ -8,7 +8,7 @@ import slap_pop_art from "./slap_pop_art.avif";
 import slap_real_hand from "./slap_real_hand.png";
 import slap_speed from "./slap_speed.jpg";
 import { Link, Routes, Route, Navigate } from "react-router-dom";
-import Gallery from "./components/Gallery";
+import Gallery from "./Gallery";
 import useStyles from "./style";
 
 const logo = [
@@ -96,17 +96,25 @@ function App(props) {
                 </div>
               </section>
               <section className={classes.Stickers}>
-                Second: select your sticker...
-                {stickers.map((sticker, index) => (
-                  <button key={index} onClick={() => setSticker(sticker)}>
-                    <img src={sticker.url} alt={`Sticker ${index + 1}`} />
-                  </button>
-                ))}
+                <div className={classes.FirstSub}>
+                  <h4>Second: Choose. Your. Champion!</h4>
+                  <p>...or slap-ion!</p>
+                </div>
+                <div>
+                  {stickers.map((sticker, index) => (
+                    <button key={index} onClick={() => setSticker(sticker)}>
+                      <img src={sticker.url} alt={`Sticker ${index + 1}`} />
+                    </button>
+                  ))}
+                </div>
               </section>
 
               <section className={classes.Main}>
-                Step three: Slap your self!
-                {/* <video ref={handleVideoRef} /> */}
+                <div className={classes.FirstSub}>
+                  <h4>Third: Let's 👏🏽 get 👏🏽 slappin 👏🏽</h4>
+                  <p>Place your slap, then tap!</p>
+                </div>
+                <video ref={handleVideoRef} />
                 <canvas
                   ref={handleCanvasRef}
                   width={2}

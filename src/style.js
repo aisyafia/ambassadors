@@ -17,7 +17,7 @@ const useStyles = createUseStyles((theme) => ({
   blurCircle2: {
     left: "66.666%",
     right: "0.125rem",
-    width: "68rem",
+    width: "50rem",
   },
   "@global body": {
     color: theme.light.primary,
@@ -78,6 +78,7 @@ const useStyles = createUseStyles((theme) => ({
     background: theme.light.secondary,
     borderRadius: "8px",
     padding: "8px",
+    marginTop: "2rem",
 
     "& canvas": {
       marginTop: "1rem",
@@ -99,6 +100,11 @@ const useStyles = createUseStyles((theme) => ({
     display: "flex",
     alignItems: "center",
     height: "20px",
+    marginBottom: "1rem",
+
+    "& h4": {
+      marginRight: "1rem",
+    },
   },
   FirstInput: {
     textAlign: "center",
@@ -112,10 +118,8 @@ const useStyles = createUseStyles((theme) => ({
     },
   },
   Stickers: {
-    marginTop: "1rem",
-    marginBottom: "1rem",
-    display: "flex",
-    alignItems: "center",
+    marginTop: "2rem",
+    marginBottom: "4rem",
 
     "& img": {
       height: "4rem",
@@ -131,6 +135,48 @@ const useStyles = createUseStyles((theme) => ({
         filter:
           "drop-shadow(0 20px 13px rgb(0 0 0 / 0.03)) drop-shadow(0 8px 5px rgb(0 0 0 / 0.08))",
       },
+    },
+  },
+  Gallery: {
+    marginTop: "2rem",
+    marginBottom: "1rem",
+    borderRadius: "8px",
+    "& img": {
+      height: "16rem",
+      borderRadius: "8px",
+    },
+  },
+  Picture: {
+    position: "relative",
+    display: "flex",
+    justifyContent: "center",
+    alignItems: "center",
+    borderRadius: "8px",
+    border: "1px",
+    borderColor: theme.light.primary,
+    marginBottom: "1rem",
+    "& h3": {
+      textAlign: "center",
+      width: "fit-content",
+    },
+
+    "&:hover button": {
+      opacity: 1,
+      visibility: "visible",
+    },
+  },
+  Actions: {
+    marginLeft: 8,
+
+    "& button": {
+      padding: "6px 12px",
+      borderRadius: "4px",
+      background: "transparent",
+      border: "none",
+      cursor: "pointer",
+      opacity: 0,
+      visibility: "hidden",
+      transition: "opacity 0.3s ease, visibility 0.3s ease",
     },
   },
 }));
