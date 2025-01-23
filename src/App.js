@@ -15,7 +15,7 @@ const useStyles = createUseStyles((theme) => ({
   "@global body": {
     background: theme.light.background,
     color: theme.light.primary,
-    fontFamily: "monospace",
+    fontFamily: "'Prompt', serif",
   },
 
   App: {
@@ -40,6 +40,8 @@ const useStyles = createUseStyles((theme) => ({
 
     "& li": {
       listStyleType: "none",
+      fontFamily: "'Prompt', serif",
+      fontWeight: 300,
     },
 
     "& a": {
@@ -55,10 +57,17 @@ const useStyles = createUseStyles((theme) => ({
   },
   Header: {
     "&  h1": {
-      fontFamily: "monospace",
+      fontFamily: "'Unbounded', serif",
       cursor: "pointer",
       fontSize: "4rem",
+      textAlign: "center",
+      marginBottom: "2rem",
     },
+  },
+  Subtitle: {
+    fontFamily: "Unbounded",
+    textAlign: "center",
+    marginBottom: "4rem",
   },
   Main: {
     background: theme.light.secondary,
@@ -76,9 +85,26 @@ const useStyles = createUseStyles((theme) => ({
     },
   },
   First: {
-    display: "flex",
     alignItems: "center",
     gap: "1rem",
+    marginTop: "2rem",
+    marginBottom: "4rem",
+  },
+  FirstSub: {
+    display: "flex",
+    alignItems: "center",
+    height: "20px",
+  },
+  FirstInput: {
+    textAlign: "center",
+    height: "20px",
+    marginTop: "1rem",
+  },
+  FirstExplain: {
+    "& p": {
+      height: "20px",
+      margin: 4,
+    },
   },
   Stickers: {
     marginTop: "1rem",
@@ -148,9 +174,11 @@ function App(props) {
       </nav>
       <header className={classes.Header}>
         <h1>SlapSticker</h1>
-        <p>
+        <p className={classes.Subtitle}>
           Have you ever said something so dumb, you just wanted to slap
-          yourself? Well now you can!
+          yourself?
+          <br />
+          Well now you can!
         </p>
       </header>
       <Routes>
@@ -160,16 +188,31 @@ function App(props) {
           element={
             <main>
               <section className={classes.First}>
-                Step one: Give it a name
-                <input
-                  type="text"
-                  placeholder="some fun name!"
-                  value={title}
-                  onChange={(ev) => setTitle(ev.target.value)}
-                />
+                <div className={classes.FirstSub}>
+                  <h4>First: "What's in a name?"</h4>
+                  <p>-- um, a cool insta handler!</p>
+                </div>
+                <div className={classes.FirstExplain}>
+                  <p>
+                    So before you start slapping left and right, pick a word, a
+                    name and type below:
+                  </p>
+                  <p>
+                    (psst, don't think too hard, you can give different name for
+                    each time you take a shot!)
+                  </p>
+                </div>
+                <div className={classes.FirstInput}>
+                  <input
+                    type="text"
+                    placeholder="some fun name!"
+                    value={title}
+                    onChange={(ev) => setTitle(ev.target.value)}
+                  />
+                </div>
               </section>
               <section className={classes.Stickers}>
-                Step 2: select your sticker...
+                Second: select your sticker...
                 {stickers.map((sticker, index) => (
                   <button key={index} onClick={() => setSticker(sticker)}>
                     <img src={sticker.url} alt={`Sticker ${index + 1}`} />
@@ -185,7 +228,7 @@ function App(props) {
 
               <section className={classes.Main}>
                 Step three: Slap your self!
-                <video ref={handleVideoRef} />
+                {/* <video ref={handleVideoRef} /> */}
                 <canvas
                   ref={handleCanvasRef}
                   width={2}
